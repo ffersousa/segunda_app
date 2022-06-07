@@ -3,19 +3,15 @@ import { TextInput, Button, View } from "react-native";
 import { StyleSheet, Text, Image } from "react-native";
 import { Input } from "../components/Input";
 
-export default function App() {
-  const data = [
-    { nome: "oalala", idade: 21 },
-    {
-      nome: "212",
-      idade: 21,
-    },
-    {
-      nome: "dsdsds",
-      idade: 21,
-    },
-  ];
-  // ciclo for
+export function Listar() {
+  const [data, setData] = useState([]);
+
+  fetch("https://jsonplaceholder.typicode.com/posts")
+    .then((response) => response.json())
+    .then((json) => {
+      setData(json);
+    }); // ciclo
+
   return (
     <View style={styles.container}>
       <Image
